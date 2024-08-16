@@ -1,0 +1,45 @@
+﻿<mah:MetroWindow x:Class="PsoHacker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PsoHacker"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        Icon="pack://application:,,,/psoHacker.ico"
+        ShowIconOnTitleBar="False"
+        mc:Ignorable="d"
+        Title="PSO EP1&amp;2 Hacker" Height="450" Width="800">
+    <StackPanel IsEnabled="{Binding IsProcessAttached}" Margin="10">
+        <TextBlock Text="Start Dolphin to enable controls."></TextBlock>
+        <TextBlock Text="When Phantasy Star Online Episode 1 and 2 is started in Dolphin and you are in the character costume change menu, hit the Refresh button."></TextBlock>
+        <TextBlock Text="Make sure you backup your memory card before saving anything!" FontWeight="Bold" Foreground="Yellow"></TextBlock>
+        
+        <Separator Margin="10"></Separator>
+        
+        <Button Width="150" HorizontalAlignment="Left" Click="OnSearchClicked">Refresh</Button>
+        <TextBlock Text="Target address:"></TextBlock>
+        <TextBox IsReadOnly="True" Text="{Binding TargetAddress}" Width="150" HorizontalAlignment="Left"></TextBox>
+        
+        <Separator Margin="10"></Separator>
+        
+        <TextBlock Text="Name:"></TextBlock>
+        <TextBox Text="{Binding CharacterName}" Width="200" HorizontalAlignment="Left" MaxLength="12"></TextBox>
+        
+        <TextBlock Text="Level:"></TextBlock>
+        <TextBox Text="{Binding CharacterLevel}" Width="50" HorizontalAlignment="Left" MaxLength="3"></TextBox>
+        
+        <TextBlock Text="Section ID:"></TextBlock>
+        <!-- Use the SectionId enum as the ItemsSource for the ComboBox -->
+        <ComboBox IsEnabled="{Binding IsProcessAttached}" ItemsSource="{Binding SectionIdValues}"
+                  SelectedValue="{Binding CharacterSectionId}" SelectedValuePath="Value" DisplayMemberPath="Key"
+                  Width="200" HorizontalAlignment="Left"></ComboBox>
+        
+        <Separator Margin="10"></Separator>
+        
+        <Button Width="150" HorizontalAlignment="Left" Click="OnSaveClicked" IsEnabled="{Binding CanSave}">Save</Button>
+        
+        <TextBlock Text="{Binding SuccessMessage}" TextWrapping="Wrap" Foreground="DarkGreen" Margin="0 10 0 0"></TextBlock>
+        <TextBlock Text="{Binding ErrorMessage}" TextWrapping="Wrap" Foreground="DarkRed"></TextBlock>
+        
+    </StackPanel>
+</mah:MetroWindow>
