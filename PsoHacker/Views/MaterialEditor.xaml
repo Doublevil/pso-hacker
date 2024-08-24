@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="PsoHacker.Views.MaterialEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PsoHacker.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <StackPanel>
+        <TextBlock Text="These settings work at any point in a single-player game." TextWrapping="Wrap"></TextBlock>
+        <TextBlock Text="Hit the refresh button to synchronize values with the game. Always refresh before editing." TextWrapping="Wrap" Margin="0 0 0 10"></TextBlock>
+        <Button Width="150" HorizontalAlignment="Left" Click="OnSearchClicked">Refresh</Button>
+        <TextBlock Text="Target address:"></TextBlock>
+        <TextBox IsReadOnly="True" Text="{Binding TargetAddress}" Width="150" HorizontalAlignment="Left"></TextBox>
+        
+        <Separator Margin="10"></Separator>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="90" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            
+            <StackPanel Grid.Row="0" Grid.Column="0" Margin="0 0 20 0">
+                <TextBlock Text="Power:"></TextBlock>
+                <!-- Show an integer value for the power of the material, editable with an up/down control -->
+                <TextBox Text="{Binding PowerMaterialCount}" MaxLength="3"></TextBox>
+                
+            </StackPanel>
+            
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="0 0 20 0">
+                <TextBlock Text="Mind:"></TextBlock>
+                <TextBox Text="{Binding MindMaterialCount}" MaxLength="3"></TextBox>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="0" Grid.Column="2" Margin="0 0 20 0">
+                <TextBlock Text="Evasion:"></TextBlock>
+                <TextBox Text="{Binding EvadeMaterialCount}" MaxLength="3"></TextBox>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1" Grid.Column="0" Margin="0 0 20 0">
+                <TextBlock Text="Defense:"></TextBlock>
+                <TextBox Text="{Binding DefMaterialCount}" MaxLength="3"></TextBox>
+            </StackPanel>
+            
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="0 0 20 0">
+                <TextBlock Text="Luck:"></TextBlock>
+                <TextBox Text="{Binding LuckMaterialCount}" MaxLength="3"></TextBox>
+            </StackPanel>
+        
+        </Grid>
+        
+        <Separator Margin="10"></Separator>
+        
+        <Button Width="150" HorizontalAlignment="Left" Click="OnSaveClicked" IsEnabled="{Binding CanSave}">Save</Button>
+        
+        <TextBlock Text="{Binding SuccessMessage}" TextWrapping="Wrap" Foreground="DarkGreen" Margin="0 10 0 0"></TextBlock>
+        <TextBlock Text="{Binding ErrorMessage}" TextWrapping="Wrap" Foreground="DarkRed"></TextBlock>
+    </StackPanel>
+</UserControl>

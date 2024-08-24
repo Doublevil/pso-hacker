@@ -16,14 +16,4 @@ public partial class MainWindow : MetroWindow
         _viewModel = new MainViewModel();
         DataContext = _viewModel;
     }
-
-    private void OnSearchClicked(object sender, RoutedEventArgs e)
-    {
-        _viewModel.Search();
-    }
-
-    private void OnSaveClicked(object sender, RoutedEventArgs e)
-    {
-        _viewModel.Save();
-    }
 }
